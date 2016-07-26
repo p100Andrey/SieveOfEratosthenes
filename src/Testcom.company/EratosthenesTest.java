@@ -1,5 +1,3 @@
-package Testcom.company;
-
 import com.company.Eratosthenes;
 import org.junit.Test;
 
