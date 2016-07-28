@@ -11,25 +11,25 @@ public class Eratosthenes {
         for (int i = 2; i <= n; i++) {
             simpleNumbers.add(i);
         }
-        boolean flag;
+        boolean state;
         do {
-            flag = false;
+            state = false;
             for (Integer element : simpleNumbers) {
                 for (Integer elementInto : simpleNumbers) {
                     if ((elementInto % element == 0) && (element != elementInto)) {
-                        flag = true;
+                        state = true;
                         break;
                     }
                 }
-                if (flag == true) {
+                if (state) {
                     simpleNumbers = removeElements(simpleNumbers, element);
                     break;
                 }
             }
-            if (flag == false) {
+            if (state == false) {
                 return simpleNumbers;
             }
-        } while (flag);
+        } while (state);
         return simpleNumbers;
     }
 
