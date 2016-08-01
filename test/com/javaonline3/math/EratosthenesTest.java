@@ -19,9 +19,11 @@ public class EratosthenesTest {
     private List<Integer> expectedResult;
 
     public EratosthenesTest(int n, List<Integer> expectedResult) {
+        this.n = n;
+        this.expectedResult = expectedResult;
     }
 
-    @Parameterized.Parameters()
+    @Parameterized.Parameters(name = "{index}. findOfSimpleNumbers({0}) == {1}")
     public static List<Object[]> list() {
         return Arrays.asList(new Object[][]{
                 {20, Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19)},
@@ -37,8 +39,6 @@ public class EratosthenesTest {
 
     @Test
     public void findOfSimpleNumbers() throws Exception {
-        List<Integer> realResult = eratosthenes.findOfSimpleNumbers(20);
-        List<Integer> expectedResult = Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19);
-        assertEquals(expectedResult, realResult);
+        assertEquals(expectedResult, eratosthenes.findOfSimpleNumbers(n));
     }
 }

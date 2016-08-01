@@ -5,7 +5,7 @@ import com.javaonline3.view.InputController;
 
 import java.util.List;
 
-public class Main {
+public class EntryPointConsole {
     public static void main(String[] args) {
         InputController inputController = new InputController(System.in);
         Eratosthenes eratosthenes = new Eratosthenes();

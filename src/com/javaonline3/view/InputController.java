@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class InputController {
+
     private Scanner scanner;
 
     public InputController(InputStream inputStream) {
@@ -12,18 +13,24 @@ public class InputController {
 
     public int readInt() {
         do {
-            try {
+            try{
                 System.out.println("Enter the number n:");
-                int i = Integer.parseInt(scanner.next());
-                if (i <= 0) {
-                    throw new IllegalArgumentException();
-                }
-                return i;
-            } catch (NumberFormatException ex) {
-                System.out.println("The value must be a number!");
-            } catch (IllegalArgumentException ex) {
-                System.out.println("The number n must be greater than 0");
+                return convertToInt(scanner.next());
+            }catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
             }
         } while (true);
+    }
+
+    public static int convertToInt(String text) {
+        try {
+            int i = Integer.parseInt(text);
+            if (i <= 0) {
+                throw new ConvertToIntException(ConvertToIntException.ERROR_NEGATIVE);
+            }
+            return i;
+        } catch (NumberFormatException ex) {
+            throw new ConvertToIntException(ConvertToIntException.ERROR_NUMERIC);
+        }
     }
 }
